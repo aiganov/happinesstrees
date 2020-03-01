@@ -104,7 +104,8 @@ textarea {
   flex-direction: column;
 }
 .page-header section,
-.header-top > div {
+.header-top > div,
+.header-middle > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -113,6 +114,9 @@ textarea {
 .page-header .header-top {
   display: block;
   margin-bottom: 30px;
+}
+.page-header .header-middle {
+  display: block;
 }
 /* ==== Выбор города ====  */
 .location,
@@ -139,22 +143,33 @@ textarea {
   padding-right: 25px;
   background-size: 16px 16px;
 }
-.location .current::after {
-  position: absolute;
-  top: 32px;
-  right: 0;
-  content: "";
-  display: block;
-  width: 16px;
-  height: 16px;
-  background: url(../img/arrow.svg) no-repeat;
-  transition: all 0.2s;
-}
 .location .current > a:hover {
   cursor: default;
 }
-.location .current:hover::after {
+.location .current:hover .location-icon-arrow {
+  fill: #358935;
   transform: rotate(180deg);
+}
+.location .current:hover .location-icon-place {
+  fill: #3EB340;
+}
+.location-icon-arrow {
+  position: absolute;
+  top: 32px;
+  right: 0;
+  /**
+	content: "";
+	display: block;
+	width: 16px;
+	height: 16px;
+	**/
+  transition: all 0.2s;
+}
+.location-icon-place {
+  position: absolute;
+  top: 24px;
+  left: -40px;
+  fill: #358935;
 }
 .location-other {
   position: absolute;
@@ -195,6 +210,12 @@ textarea {
   color: #358935;
 }
 /* ==== Вход для пользователей ====  */
+.user {
+  position: relative;
+}
+.user:hover .user-icon {
+  fill: #3EB340;
+}
 .user a {
   padding-left: 48px;
   color: #082809;
@@ -206,10 +227,25 @@ textarea {
 .user a:active {
   color: #358935;
 }
+.user a:active + .user-icon {
+  fill: #246725;
+}
+.user-icon {
+  position: absolute;
+  top: -30%;
+  left: 0;
+  fill: #358935;
+}
 /* ==== Лого ====  */
 .logo-header {
-  max-width: 250px;
+  max-width: 23%;
   margin-right: 15px;
+}
+.logo-header:hover {
+  opacity: 0.8;
+}
+.logo-header:active {
+  opacity: 0.5;
 }
 /* ==== Поиск ====  */
 .search {
@@ -242,8 +278,8 @@ textarea {
 .phone {
   flex-shrink: 0;
   margin-right: 15px;
-  font-size: 16px;
-  text-align: center;
+  font-size: 18px;
+  text-align: right;
 }
 .phone a {
   display: block;
@@ -257,8 +293,9 @@ textarea {
   color: #3EB340;
 }
 .time {
+  position: relative;
   margin-right: 15px;
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
 }
 .time p {
@@ -270,16 +307,73 @@ textarea {
   display: block;
   font-weight: 400;
 }
+.time-icon {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  fill: #358935;
+}
 .likes {
+  position: relative;
   display: block;
   margin-right: 15px;
   content: "";
-  width: 40px;
-  height: 35px;
-  /**background: red;**/
+}
+.likes:hover .likes-icon {
+  fill: #62c262;
+}
+.likes:active .likes-icon {
+  fill: #193f19;
+}
+.likes-icon {
+  fill: #358935;
+}
+.likes-count {
+  position: absolute;
+  top: 0;
+  left: 30px;
+  width: 16px;
+  height: 15.8px;
+  font-size: 11px;
+  line-height: 16px;
+  text-align: center;
+  color: #fff;
+  background: #F26262;
+  border-radius: 100%;
+}
+.cart {
+  position: relative;
+  display: block;
+  text-decoration: none;
+}
+.basket-icon {
+  position: absolute;
+  top: -12px;
+  fill: #358935;
+}
+.basket-count {
+  position: absolute;
+  top: -14px;
+  left: 30px;
+  width: 16px;
+  height: 15.8px;
+  font-size: 11px;
+  line-height: 16px;
+  text-align: center;
+  color: #fff;
+  background: #F26262;
+  border-radius: 100%;
 }
 .sum {
+  margin: 0;
+  padding: 0;
   padding-left: 50px;
+}
+.sum:hover + .basket-icon {
+  fill: #3EB340;
+}
+.sum:active + .basket-icon {
+  fill: #246725;
 }
 /* ==== Меню Категорий ====  */
 .header-bottom {
@@ -352,12 +446,18 @@ textarea {
 .slider-prev {
   position: absolute;
   left: 0;
-  top: 50%;
+  top: 65%;
+}
+.slider-prev-icon {
+  transform: rotate(90deg);
 }
 .slider-next {
   position: absolute;
   right: 0;
-  top: 50%;
+  top: 65%;
+}
+.slider-next-icon {
+  transform: rotate(-90deg);
 }
 .slider-item {
   text-align: center;
@@ -621,12 +721,18 @@ textarea {
 .footer-logo {
   margin-bottom: 50px;
 }
+.footer-logo:hover {
+  opacity: 0.8;
+}
+.footer-logo:active {
+  opacity: 0.5;
+}
 .page-footer .time {
   text-align: left;
 }
 .page-footer .phone {
   margin-bottom: 50px;
-  text-align: left;
+  text-align: right;
 }
 .page-footer .phone a {
   width: 180px;
