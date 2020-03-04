@@ -795,6 +795,21 @@ nav li:hover .sub-icon::after {
   .category-menu li:active {
     background: #b1ff8a;
   }
+
+	.submenu-wrapper {
+		display: none;
+	}
+
+	nav li:hover .submenu-area,
+	nav li:hover .submenu,
+	nav li:hover .sub-icon::after {
+		display: none;
+	}
+
+	nav li:hover .submenu-wrapper {
+		display: none;
+	}		
+	
   .category-gifts {
     flex-direction: column;
     padding: 5px 0;
